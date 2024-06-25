@@ -1,4 +1,3 @@
-import utils
 import dynamo
 from fastapi import FastAPI, HTTPException, status
 from botocore.exceptions import ClientError
@@ -6,6 +5,14 @@ from pokemon import Pokemon
 
 
 app = FastAPI()
+
+
+@app.get("/")
+def get_home():
+    return {
+        "project": "python-app-pokemon-restapi",
+        "version": "v0.1.0"
+    }
 
 
 @app.get("/pokemons")

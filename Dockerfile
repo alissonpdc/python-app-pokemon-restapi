@@ -1,9 +1,5 @@
 FROM ubuntu:22.04
 
-WORKDIR /app
-COPY ./src/app .
-COPY ./src/requirements.txt .
-
 # fix timezone
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Sao_Paulo
@@ -21,7 +17,12 @@ RUN apt update && \
 RUN apt install curl -y && \
     curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12 
 
+
+WORKDIR /app
+COPY ./src/requirements.txt .
 RUN pip3.12 install -r requirements.txt
+
+COPY ./src/app .
 
 EXPOSE 8000
 
