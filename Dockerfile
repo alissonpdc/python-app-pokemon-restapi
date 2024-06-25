@@ -1,8 +1,8 @@
 FROM ubuntu:22.04
 
 WORKDIR /app
-COPY ./app .
-COPY requirements.txt .
+COPY ./src/app .
+COPY ./src/requirements.txt .
 
 # fix timezone
 ARG DEBIAN_FRONTEND=noninteractive
