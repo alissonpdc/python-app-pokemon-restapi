@@ -1,0 +1,16 @@
+FROM public.ecr.aws/lambda/python:3.12
+
+# fix timezone
+# ARG DEBIAN_FRONTEND=noninteractive
+# ENV TZ=America/Sao_Paulo
+# RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# WORKDIR /app    
+# EXPOSE 8000
+CMD ["lambda_function.handler"]
+
+
+COPY ./src/requirements.txt ${LAMBDA_TASK_ROOT}
+# RUN pip install -r requirements.txt
+
+COPY ./src/app ${LAMBDA_TASK_ROOT}

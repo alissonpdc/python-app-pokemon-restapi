@@ -11,7 +11,7 @@ app = FastAPI()
 def get_home():
     return {
         "project": "python-app-pokemon-restapi",
-        "version": "v0.1.0"
+        "version": "v1"
     }
 
 

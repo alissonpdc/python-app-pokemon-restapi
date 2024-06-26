@@ -17,13 +17,12 @@ RUN apt update && \
 RUN apt install curl -y && \
     curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12 
 
+WORKDIR /app    
+EXPOSE 8000
+CMD ["fastapi", "run"]
 
-WORKDIR /app
+
 COPY ./src/requirements.txt .
-RUN pip3.12 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY ./src/app .
-
-EXPOSE 8000
-
-CMD ["fastapi", "run"]
